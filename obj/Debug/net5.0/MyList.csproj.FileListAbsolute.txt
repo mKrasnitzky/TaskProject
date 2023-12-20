@@ -1,0 +1,7 @@
+Z:\B\קרסניצקי מרים\core good\1\MyList\obj\Debug\net5.0\MyList.csproj.AssemblyReference.cache
+Z:\B\קרסניצקי מרים\core good\1\MyList\obj\Debug\net5.0\MyList.GeneratedMSBuildEditorConfig.editorconfig
+Z:\B\קרסניצקי מרים\core good\1\MyList\obj\Debug\net5.0\MyList.AssemblyInfoInputs.cache
+Z:\B\קרסניצקי מרים\core good\1\MyList\obj\Debug\net5.0\MyList.AssemblyInfo.cs
+Z:\B\קרסניצקי מרים\core good\1\MyList\obj\Debug\net5.0\MyList.csproj.CoreCompileInputs.cache
+Z:\B\קרסניצקי מרים\core good\1\MyList\obj\Debug\net5.0\MyList.MvcApplicationPartsAssemblyInfo.cs
+Z:\B\קרסניצקי מרים\core good\1\MyList\obj\Debug\net5.0\MyList.MvcApplicationPartsAssemblyInfo.cache
