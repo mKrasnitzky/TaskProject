@@ -1,5 +1,5 @@
 using TaskProject.Services;
-
+using TaskProject.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,13 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddTask();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseLogMiddleware("file.log");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -23,7 +28,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseDefaultFiles();
-            
+
 app.UseStaticFiles();
 
 app.UseAuthorization();

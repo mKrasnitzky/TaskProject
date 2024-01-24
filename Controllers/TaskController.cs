@@ -21,6 +21,7 @@ namespace TaskProject.Controllers
         [HttpGet]
         public ActionResult<List<Task>> Get()
         {
+            
             return TaskService.GetAll();
         }
 
@@ -36,6 +37,7 @@ namespace TaskProject.Controllers
         [HttpPost]
         public ActionResult Post(Task newTask)
         {
+            System.Console.WriteLine("fgfg");
             var newId = TaskService.Add(newTask);
 
             return CreatedAtAction("Post", new {id = newId}, TaskService.GetById(newId));
@@ -51,6 +53,18 @@ namespace TaskProject.Controllers
             }
             return NoContent();
         }
+
+[HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var result = TaskService.Delete(id);
+            if (!result)
+            {
+                return BadRequest();
+            }
+            return NoContent();
+        }
+
     }
 
 }

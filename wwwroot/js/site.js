@@ -12,9 +12,12 @@ function addItem() {
     const addNameTextbox = document.getElementById('add-name');
 
     const item = {
+        id: 7,
+        profession: "string",
         isDone: false,
         description: addNameTextbox.value.trim()
     };
+
 
     fetch(uri, {
             method: 'POST',
@@ -33,6 +36,7 @@ function addItem() {
 }
 
 function deleteItem(id) {
+    console.log(id);
     fetch(`${uri}/${id}`, {
             method: 'DELETE'
         })
@@ -54,9 +58,10 @@ function updateItem() {
     const item = {
         id: parseInt(itemId, 10),
         isDone: document.getElementById('edit-isDone').checked,
-        description: document.getElementById('edit-name').value.trim()
+        description: document.getElementById('edit-name').value.trim(),
+        profession: ""
     };
-
+    console.log(item);
     fetch(`${uri}/${itemId}`, {
             method: 'PUT',
             headers: {
@@ -84,7 +89,8 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
-    const tBody = document.getElementById('pizzas');
+    console.log(data);
+    const tBody = document.getElementById('tasks');
     tBody.innerHTML = '';
 
     _displayCount(data.length);

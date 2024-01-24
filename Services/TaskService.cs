@@ -19,7 +19,7 @@ namespace TaskProject.Services
     
         public TaskService()
         {
-            this.fileName = Path.Combine("Data", "Tasks.json");
+            this.fileName = Path.Combine("data", "Tasks.json");
             using (var jsonFile = File.OpenText(fileName))
             {
                 tasks = JsonSerializer.Deserialize<List<Task>>(jsonFile.ReadToEnd(),
@@ -30,6 +30,11 @@ namespace TaskProject.Services
             }
         }
     
+      private void saveToFile()
+        {
+            File.WriteAllText(fileName, JsonSerializer.Serialize(tasks));
+        }
+
         public List<Task> GetAll() => tasks;
     
         public Task GetById(int id)
@@ -48,7 +53,7 @@ namespace TaskProject.Services
                 newTask.Id = tasks.Max(t => t.Id) + 1;
             }
             tasks.Add(newTask);
-    
+            saveToFile();
             return newTask.Id;
         }
     
@@ -64,6 +69,7 @@ namespace TaskProject.Services
             if (index == -1)
                 return false;
             tasks[index]=newTask;
+                        saveToFile();
             return true;
         }
 
@@ -78,6 +84,8 @@ namespace TaskProject.Services
                 return false;
 
             tasks.RemoveAt(index);
+                        saveToFile();
+
             return true;
         }  
     }
