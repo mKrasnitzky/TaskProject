@@ -1,16 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
-using MyList.Services;
+using TaskProject.Services;
 using System.Collections.Generic;
+using TaskProject.Interfaces;
 
-namespace MyList.Controllers
+namespace TaskProject.Controllers
 {
-    using MyList.Models;
+    using TaskProject.Models;
 
 
     [ApiController]
     [Route("[controller]")]
-    public class TaskController : ControllerBase
+    public class TaskProjectController : ControllerBase
     {
+        ITaskService TaskService;
+        public TaskProjectController(ITaskService TaskService)
+        {
+            this.TaskService = TaskService;
+        }
+
         [HttpGet]
         public ActionResult<List<Task>> Get()
         {

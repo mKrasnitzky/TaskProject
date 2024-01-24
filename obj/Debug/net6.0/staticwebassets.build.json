@@ -1,11 +1,71 @@
 {
   "Version": 1,
-  "Hash": "g9rg526BjwNODuumWxxRRQwiZXFgz3oI/TlkTJ4ib8I=",
-  "Source": "MyList",
-  "BasePath": "_content/MyList",
+  "Hash": "sfvNBEV2yQVgSoJeieT9gbRKmxF6lYV3Q6rIftWFnqY=",
+  "Source": "TaskProject",
+  "BasePath": "_content/TaskProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "TaskProject\\wwwroot",
+      "Source": "TaskProject",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\css\\site.css",
+      "SourceId": "TaskProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\index.html",
+      "SourceId": "TaskProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\js\\site.js",
+      "SourceId": "TaskProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "RelativePath": "js/site.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
+    }
+  ]
 }

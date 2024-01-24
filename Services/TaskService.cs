@@ -1,32 +1,43 @@
 using System.Collections.Generic;
 using System.Linq;
+using TaskProject.Interfaces;
+using System.Collections.Generic;
+using System.IO;
+using System;
+using System.Text.Json;
+ 
 // using System.Threading;
 
-namespace MyList.Services{
-using MyList.Models;
+namespace TaskProject.Services
+{
+    using TaskProject.Models;
 
-    public static class TaskService
+    public class TaskService : ITaskService
     {
-        private static List<Task> tasks;
+        private List<Task> tasks;
+        private string fileName = "Tasks.json";
     
-        static TaskService()
+        public TaskService()
         {
-            tasks = new List<Task>
+            this.fileName = Path.Combine("Data", "Tasks.json");
+            using (var jsonFile = File.OpenText(fileName))
             {
-                new Task { Id = 1, Profession = "node.js", Description = "to finish"},
-                new Task { Id = 2, Profession = "java", Description = ""},
-                new Task { Id = 3, Profession = "c#", Description = "study for the test"}
-            };
+                tasks = JsonSerializer.Deserialize<List<Task>>(jsonFile.ReadToEnd(),
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
         }
     
-        public static List<Task> GetAll() => tasks;
+        public List<Task> GetAll() => tasks;
     
-        public static Task GetById(int id)
+        public Task GetById(int id)
         {
             return tasks.FirstOrDefault(t => t.Id == id);
         }
     
-        public static int Add(Task newTask)
+        public int Add(Task newTask)
         {
             if (tasks.Count == 0)
             {
@@ -41,7 +52,7 @@ using MyList.Models;
             return newTask.Id;
         }
     
-        public static bool Updata(int id, Task newTask)
+        public bool Updata(int id, Task newTask)
         {
             if (id != newTask.Id)
                 return false;
@@ -55,5 +66,28 @@ using MyList.Models;
             tasks[index]=newTask;
             return true;
         }
+
+        public bool Delete(int id)
+        {
+            var existingTask = GetById(id);
+            if (existingTask == null )
+                return false;
+
+            var index = tasks.IndexOf(existingTask);
+            if (index == -1 )
+                return false;
+
+            tasks.RemoveAt(index);
+            return true;
+        }  
     }
+
+    public static class TaskUtils
+    {
+        public static void AddTask(this IServiceCollection services)
+        {
+            services.AddSingleton<ITaskService, TaskService>();
+        }
+    }
+
 }
