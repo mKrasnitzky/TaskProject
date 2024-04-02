@@ -14,12 +14,12 @@ namespace TaskProject.Controllers{
     [Route("[controller]")]
 
     public class UserController : ControllerBase {
+
         IUserService UserService;
         int userId;
         
         public UserController(IUserService UserService, IHttpContextAccessor httpcontextAccessor)
         {
-            System.Console.WriteLine("in controller user");
             userId = int.Parse(httpcontextAccessor?.HttpContext.User.FindFirst("id")?.Value);
             this.UserService = UserService;
         }
@@ -29,7 +29,6 @@ namespace TaskProject.Controllers{
         [Authorize(Policy = "User")]
         public ActionResult<User> GetMyUser()
         {
-            
             return UserService.Get(userId);
         }
 
@@ -37,7 +36,6 @@ namespace TaskProject.Controllers{
         [Authorize(Policy = "Admin")]
         public ActionResult<List<User>> Get()
         {
-            
             return UserService.GetAll();
         }
 
@@ -46,8 +44,10 @@ namespace TaskProject.Controllers{
         public ActionResult<User> Get(int id)
         {
             var user = UserService.GetById(id);
+
             if (user == null)
                 return NotFound();
+                
             return user;
         }
 
@@ -55,7 +55,7 @@ namespace TaskProject.Controllers{
         [Authorize(Policy = "Admin")]
         public ActionResult Post(User newUser)
         {
-            System.Console.WriteLine("fgfg");
+            
             var newId = UserService.Add(newUser);
 
             return CreatedAtAction("Post", new {id = newId}, UserService.GetById(newId));

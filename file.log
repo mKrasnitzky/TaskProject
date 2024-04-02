@@ -710,3 +710,17 @@
 /swagger/swagger-ui-bundle.js.GET took 175ms. User: unknown
 /swagger/v1/swagger.json.GET took 62ms. User: unknown
 /Task.GET took 290ms. User: unknown
+/index.html.GET took 57ms. User: unknown
+/css/site.css.GET took 7ms. User: unknown
+/js/site.js.GET took 12ms. User: unknown
+/favicon.ico.GET took 119ms. User: unknown
+/swagger.GET took 3ms. User: unknown
+/swagger/index.html.GET took 31ms. User: unknown
+/swagger/swagger-ui.css.GET took 32ms. User: unknown
+/swagger/swagger-ui-standalone-preset.js.GET took 108ms. User: unknown
+/swagger/swagger-ui-bundle.js.GET took 229ms. User: unknown
+/swagger/v1/swagger.json.GET took 74ms. User: unknown
+/Task.GET took 6ms. User: unknown
+/Login.POST took 159ms. User: unknown
+/Task.GET took 0ms. User: unknown
+/Task.GET took 51ms. User: unknown

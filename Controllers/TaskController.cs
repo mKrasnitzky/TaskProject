@@ -18,10 +18,7 @@ namespace TaskProject.Controllers
 
         public TaskController(ITaskService TaskService,IHttpContextAccessor httpcontextAccessor)
         {
-            System.Console.WriteLine("after");
             userId = int.Parse(httpcontextAccessor.HttpContext?.User.FindFirst("id")?.Value);
-            System.Console.WriteLine(userId);
-
             this.TaskService = TaskService;
         }
 
@@ -46,9 +43,7 @@ namespace TaskProject.Controllers
         [Authorize(Policy = "User")]
         public ActionResult Post(Task newTask)
         {
-            System.Console.WriteLine("fgfg");
             var newId = TaskService.Add(newTask, userId);
-
             return CreatedAtAction("Post", new {id = newId}, TaskService.GetById(newId, userId));
         }
 

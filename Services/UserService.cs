@@ -61,7 +61,6 @@ namespace TaskProject.Services
 
         public int Add(User user)
         {
-            users.Add(user);
             if (users.Count == 0)
             {
                 user.id = 1;
@@ -111,7 +110,7 @@ namespace TaskProject.Services
 
     }
 
-///////////////////////////////////////
+
     public static class UserUtils
     {
         public static void AddUser(this IServiceCollection services)

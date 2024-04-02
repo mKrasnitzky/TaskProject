@@ -16,7 +16,6 @@ namespace TaskProject.Controllers {
     public class LoginController : ControllerBase
     {
         ILoginService LoginService ;
-        int userId;
 
         public LoginController(ILoginService loginService)
         {
@@ -26,14 +25,9 @@ namespace TaskProject.Controllers {
         [HttpPost]
         public ActionResult<String> Login([FromBody] User user)
         {
-            System.Console.WriteLine(user.name);
-            bool u=LoginService.CheckLogin(user);
-            // System.Console.WriteLine(u.name);
-            if (u==false)
-              {  
-                System.Console.WriteLine("in if");
+            if (!LoginService.CheckLogin(user))
                 return Unauthorized();
-}
+
             var claims = new List<Claim> { };
 
             if (LoginService.CheckAdmin(user))
@@ -41,12 +35,6 @@ namespace TaskProject.Controllers {
 
             claims.Add(new Claim("type", "User"));
             claims.Add(new Claim("id", user.id.ToString()));
-            // var claims = new List<Claim>
-            // {
-            //     check(User.key);
-            // };
-            foreach( Claim c in claims)
-            Console.WriteLine(c);
 
             var token = TokenService.GetToken(claims);
 
