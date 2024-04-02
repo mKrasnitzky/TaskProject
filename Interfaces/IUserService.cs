@@ -1,16 +1,22 @@
 
 using TaskProject.Models;
 
-namespace TaskProject.Interfaces;
+namespace TaskProject.Interfaces
+{
+    public interface IUserService {
 
-public interface IUserService {
+        User Get(int userId);
 
-    User get(int id);
+        User GetById(int id);
 
-    List<User> get();
+        List<User> GetAll();
 
-    int Add(User user);
+        int Add(User user);
 
-    bool delete(int id);
+        bool Update(int id, User newUser);
 
+        bool Delete(int id);
+        List<User> getUsers();
+    }
 }
+

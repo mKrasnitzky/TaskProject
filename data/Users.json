@@ -1,5 +1,1 @@
-[
-    {
-        
-    }
-]
+[{"id":0,"name":"Nechami Cohen","email":"n1234@gmail.com","password":"Nechami1234","isAdmin":false},{"id":1,"name":"Efrat Levi","email":"EfratL1234@gmail.com","password":"Levi7878","isAdmin":false},{"id":2,"name":"Rachel Rot","email":"n1234@gmail.com","password":"RotRachel0987","isAdmin":false},{"id":3,"name":"MIRI KRASNITZKY","email":"admin@gmail.com","password":"MIRIkrasnitzkyAmin2580","isAdmin":true},{"id":4,"name":"Tzivya","email":"tz0534199716@gmail.com","password":"1234","isAdmin":false},{"id":4,"name":"Tzivya","email":"tz0534199716@gmail.com","password":"1234","isAdmin":false},{"id":5,"name":"Tzivya","email":"tz0534199716@gmail.com","password":"1234","isAdmin":false}]

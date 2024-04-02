@@ -1,78 +1,123 @@
 
-using System.Text.Json;
+using System.Collections.Generic;
+using System.Linq;
 using TaskProject.Interfaces;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+
 using TaskProject.Models;
-using TaskProject.Services;
 
-namespace TaskProject.Services;
-
-public class UserService : IUserService
+namespace TaskProject.Services
 {
-
-    private List<User> users;
-
-    private string fileName = "Users.json";
-
-    public UserService()
+    public class UserService :IUserService
     {
-        this.fileName = Path.Combine("data", "Tasks.json");
-        using (var jsonFile = File.OpenText(fileName))
+
+        private List<User> users { get; set; }
+
+        private TaskService taskService;
+    
+        private string fileName = "Users.json";
+
+        public UserService()
         {
-            users = JsonSerializer.Deserialize<List<User>>(jsonFile.ReadToEnd(),
-            new JsonSerializerOptions
+            taskService=new TaskService();
+            this.fileName = Path.Combine("data", "Users.json");
+            using (var jsonFile = File.OpenText(fileName))
             {
-                PropertyNameCaseInsensitive = true
-            });
+                users = JsonSerializer.Deserialize<List<User>>(jsonFile.ReadToEnd(),
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+
         }
 
-    }
 
-    private void saveToFile()
-    {
-        File.WriteAllText(fileName, JsonSerializer.Serialize(users));
-    }
-
-
-    public User get(int id)
-    {
-        return users.Find(user => id == user.Id);
-    }
-
-    public List<User> get()
-    {
-        return users;
-    }
-
-    public int Add(User user)
-    {
-        users.Add(user);
-        if (users.Count == 0)
+        public void saveToFile()
         {
-            user.Id = 1;
+            File.WriteAllText(fileName, JsonSerializer.Serialize(users));
         }
-        else
+
+        public User Get(int userId)
         {
-            user.Id = users.Max(t => t.Id) + 1;
+            foreach(User user in users){
+                if (user.id == userId)
+                    return user;
+            }
+            return null;
         }
-        users.Add(user);
-        saveToFile();
-        return user.Id;
+
+        public User GetById(int id)
+        {
+            return users.Find(user => id == user.id);
+        }
+
+        public List<User> GetAll()
+        {
+            return users;
+        }
+
+        public int Add(User user)
+        {
+            users.Add(user);
+            if (users.Count == 0)
+            {
+                user.id = 1;
+            }
+            else
+            {
+                user.id = users.Max(t => t.id) + 1;
+            }
+            users.Add(user);
+            saveToFile();
+            return user.id;
+        }
+
+        public bool Update(int id, User newUser)
+        {
+            if (id != newUser.id)
+                return false;
+            var existingUser = GetById(id);
+            if (existingUser == null)
+                return false;
+            var index = users.IndexOf(existingUser);
+            if (index == -1)
+                return false;
+            users[index]=newUser;
+            saveToFile();
+            return true;
+        }
+
+        public bool Delete(int id)
+        {
+            var existingTask = GetById(id);
+            if (existingTask == null)
+                return false;
+
+            var index = users.IndexOf(existingTask);
+            if (index == -1)
+                return false;
+
+            taskService.DeleteTasks(existingTask.id);
+            users.RemoveAt(index);
+            saveToFile();
+
+            return true;
+        }
+
+        public List<User>  getUsers()=>users;
+
     }
 
-    public bool delete(int id)
+///////////////////////////////////////
+    public static class UserUtils
     {
-        var existingTask = get(id);
-        if (existingTask == null)
-            return false;
-
-        var index = users.IndexOf(existingTask);
-        if (index == -1)
-            return false;
-
-        users.RemoveAt(index);
-        saveToFile();
-
-        return true;
+        public static void AddUser(this IServiceCollection services)
+        {
+            services.AddSingleton<IUserService, UserService>();
+        }
     }
 
 }

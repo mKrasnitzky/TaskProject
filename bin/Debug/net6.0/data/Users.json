@@ -1,0 +1,30 @@
+[
+    {
+      "id" : 0,
+      "name" : "Nechami Cohen",
+      "password" : "Nechami1234",
+      "email" : "n1234@gmail.com",
+      "isAdmin" : false
+    },
+    {
+      "id" : 1,
+        "name" : "Efrat Levi",
+        "password" : "Levi7878",
+        "email" : "EfratL1234@gmail.com",
+        "isAdmin" : false
+      },
+      {
+        "id" : 2,
+        "name" : "Rachel Rot",
+        "password" : "RotRachel0987",
+        "email" : "n1234@gmail.com",
+        "isAdmin" : false
+      },
+      {
+        "id" : 3,
+        "name" : "MIRI KRASNITZKY",
+        "password" : "MIRIkrasnitzkyAmin2580",
+        "email" : "admin@gmail.com",
+        "isAdmin" : true
+      }
+]

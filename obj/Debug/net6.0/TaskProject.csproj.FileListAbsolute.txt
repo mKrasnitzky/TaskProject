@@ -56,3 +56,11 @@ Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\obj\Debug\net6.0\Ta
 Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\obj\Debug\net6.0\TaskProject.genruntimeconfig.cache
 Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\obj\Debug\net6.0\ref\TaskProject.dll
 Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\data\Tasks.json
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\data\Users.json
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+Z:\B\קרסניצקי מרים\core\שיעור 2\TaskProject\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using System.Text.Json;
+using TaskProject.Models;
  
 // using System.Threading;
 
@@ -29,20 +30,28 @@ namespace TaskProject.Services
                 });
             }
         }
-    
-      private void saveToFile()
+
+
+        private void saveToFile()
         {
             File.WriteAllText(fileName, JsonSerializer.Serialize(tasks));
         }
 
-        public List<Task> GetAll() => tasks;
+        public List<Task> GetAll(int userId) {
+            List<Task> myTask = new List<Task>{ };
+            foreach(Task task in tasks) {
+                if(task.UserId == userId)
+                    myTask.Add(task);
+            }
+            return myTask;
+        } 
     
-        public Task GetById(int id)
+        public Task GetById(int id,int userId)
         {
-            return tasks.FirstOrDefault(t => t.Id == id);
+            return tasks.FirstOrDefault(t => t.Id == id && t.UserId == userId);
         }
     
-        public int Add(Task newTask)
+        public int Add(Task newTask, int userId)
         {
             if (tasks.Count == 0)
             {
@@ -52,33 +61,36 @@ namespace TaskProject.Services
             {
                 newTask.Id = tasks.Max(t => t.Id) + 1;
             }
+            newTask.UserId = userId;
             tasks.Add(newTask);
             saveToFile();
             return newTask.Id;
         }
     
-        public bool Updata(int id, Task newTask)
+        public bool Update(int id, Task newTask, int userId)
         {
             if (id != newTask.Id)
                 return false;
-            var existingTask = GetById(id);
+            var existingTask = GetById(id, userId);
             if (existingTask == null)
                 return false;
-            
+            if (existingTask.UserId != userId)
+                return false;
             var index = tasks.IndexOf(existingTask);
             if (index == -1)
                 return false;
             tasks[index]=newTask;
-                        saveToFile();
+            saveToFile();
             return true;
         }
 
-        public bool Delete(int id)
+        public bool Delete(int id, int userId)
         {
-            var existingTask = GetById(id);
+            var existingTask = GetById(id, userId);
             if (existingTask == null )
                 return false;
-
+            if (existingTask.UserId != userId)
+                return false;
             var index = tasks.IndexOf(existingTask);
             if (index == -1 )
                 return false;
@@ -87,6 +99,13 @@ namespace TaskProject.Services
                         saveToFile();
 
             return true;
+        }
+
+        public void DeleteTasks(int userId) {
+            foreach (Task task in tasks) {
+                if (task.UserId == userId)
+                    tasks.RemoveAt(tasks.IndexOf(task));
+            }
         }  
     }
 
