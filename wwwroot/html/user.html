@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Task</title>
-
-    <link rel="stylesheet" href="css/site.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
-<body onload="HaveToken()">
-    <div>
-        <a href="./html/login.html">gfdjhkl;agvhejkrvb jle.dgjhr,s;zxflk;</a>
-    </div>
-    <h1>Task</h1>
+<body onload="isAdmin()">
+    <h1>User</h1>
     <h3>Add</h3>
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
         <input type="text" id="add-name" placeholder="New task">
@@ -30,22 +26,11 @@
         </form>
     </div>
 
-    <p id="counter"></p>
-
-    <table>
-        <tr>
-            <th>Is Done?</th>
-            <th>Name</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tbody id="tasks"></tbody>
-    </table>
-
-    <script src="js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript">
+    <script src="../js/user.js" asp-append-version="true"></script>
+    <!-- <script type="text/javascript">
         getItems();
-    </script>
+    </script> -->
+
 </body>
 
 </html>

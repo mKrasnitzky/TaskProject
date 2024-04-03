@@ -1,5 +1,14 @@
 const uri = '/TaskProject';
+const token = localStorage.getItem("Token");
 let tasks = [];
+
+const HaveToken = () => {
+
+    if (!token) {
+        window.location.href = '../html/login.html';
+    }
+
+}
 
 function getItems() {
     fetch(uri)

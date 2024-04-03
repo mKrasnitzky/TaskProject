@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cx/bEY6M2gL3xZ9F32TsbLh+adqaLl350gYcrpew6pY=",
+  "Hash": "gABuiWVaYnxABLD+lO6sNJNi28hPdbu7krESwM35IIA=",
   "Source": "TaskProject",
   "BasePath": "_content/TaskProject",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\html\\login.html"
+    },
+    {
+      "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\html\\user.html",
+      "SourceId": "TaskProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "RelativePath": "html/user.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\html\\user.html"
     },
     {
       "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\index.html",
@@ -100,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\js\\user.js",
+      "SourceId": "TaskProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "RelativePath": "js/user.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\user.js"
     }
   ]
 }

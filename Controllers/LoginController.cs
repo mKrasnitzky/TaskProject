@@ -34,7 +34,7 @@ namespace TaskProject.Controllers {
                 claims.Add(new Claim("type", "Admin"));
 
             claims.Add(new Claim("type", "User"));
-            claims.Add(new Claim("id", user.id.ToString()));
+            claims.Add(new Claim("id", LoginService.GetId(user).ToString()));
 
             var token = TokenService.GetToken(claims);
 

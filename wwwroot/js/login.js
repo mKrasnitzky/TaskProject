@@ -1,7 +1,6 @@
 const saveInLocalStorage = (token) => {
 
     localStorage.setItem("Token", token);
-    alert("התחברת!!!!")
 
 }
 
@@ -10,31 +9,32 @@ const form = document.getElementById('formLogin');
 form.onsubmit = (event) => {
 
     console.log("in the func");
-    const loginUrl = 'https://localhost:7249/Login'
+    const loginUrl = '/Login'
     event.preventDefault();
-    const name = document.getElementById('name');
-    const password = document.getElementById('passwprd');
+    const name = document.getElementById('name').value;
+    const password = document.getElementById('password').value;
+    console.log();
 
     const user = {
-        id: null,
+        id: 0,
         name: name,
         password: password,
-        email: null,
-        isAdmin: null,
+        email: "",
+        isAdmin: false,
     }
 
     fetch(loginUrl, {
             method: 'POST',
             headers: {
-                'Accept': 'text/plain',
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
         })
         .then(response => response.json())
-        .then(() => {
-            saveInLocalStorage();
-            Location.href = `index.html`;
+        .then((token) => {
+            saveInLocalStorage(token);
+            window.location.href = `../index.html`;
         })
         .catch(error => {
             alert("user not find!!")
