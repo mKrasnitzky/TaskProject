@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form action="index.html" id="formLogin">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" id="name" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <button type="submit" onsubmit="getToken()">Sing in</button>
+    </form>
+</body>
+<script src="../js/login.js"></script>
+
+</html>

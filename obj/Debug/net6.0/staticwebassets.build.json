@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sfvNBEV2yQVgSoJeieT9gbRKmxF6lYV3Q6rIftWFnqY=",
+  "Hash": "cx/bEY6M2gL3xZ9F32TsbLh+adqaLl350gYcrpew6pY=",
   "Source": "TaskProject",
   "BasePath": "_content/TaskProject",
   "Mode": "Default",
@@ -34,6 +34,23 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\html\\login.html",
+      "SourceId": "TaskProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "RelativePath": "html/login.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\html\\login.html"
+    },
+    {
       "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\index.html",
       "SourceId": "TaskProject",
       "SourceType": "Discovered",
@@ -49,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\js\\login.js",
+      "SourceId": "TaskProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\",
+      "BasePath": "_content/TaskProject",
+      "RelativePath": "js/login.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\login.js"
     },
     {
       "Identity": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\wwwroot\\js\\site.js",
