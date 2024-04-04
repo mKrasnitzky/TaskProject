@@ -1,15 +1,15 @@
-const uri = '/User/GetMyUser';
+const uri = '/User';
 const isAdmin = () => {
 
     const token = localStorage.getItem("Token");
 
-    function getMyUser(token) {
+    function getUsers(token) {
         fetch(uri, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer${token}`
+                    'Authorization': `Bearer ${token}`
                 }
             })
             .then(response => response.json())
@@ -21,6 +21,6 @@ const isAdmin = () => {
             .catch(error => console.error('Unable to get User.', error));
     }
 
-    getMyUser(token);
+    getUsers(token);
 
 }

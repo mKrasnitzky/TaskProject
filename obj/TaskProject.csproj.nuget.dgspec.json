@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\TaskProject.csproj": {}
+    "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\new\\TaskProject\\TaskProject.csproj": {}
   },
   "projects": {
-    "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\TaskProject.csproj": {
+    "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\new\\TaskProject\\TaskProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\TaskProject.csproj",
+        "projectUniqueName": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\new\\TaskProject\\TaskProject.csproj",
         "projectName": "TaskProject",
-        "projectPath": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\TaskProject.csproj",
+        "projectPath": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\new\\TaskProject\\TaskProject.csproj",
         "packagesPath": "C:\\Users\\huser\\.nuget\\packages\\",
-        "outputPath": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\TaskProject\\obj\\",
+        "outputPath": "Z:\\B\\קרסניצקי מרים\\core\\שיעור 2\\new\\TaskProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,6 +69,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.25, 6.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.25, 6.0.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -77,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
