@@ -139,7 +139,7 @@ function addItem() {
 
     const item = {
         id: 7,
-        userId: this.userId,
+        userId: 0,//this.userId,
         profession: "string",
         isDone: false,
         description: addNameTextbox.value.trim()
@@ -187,6 +187,7 @@ function displayEditForm(id) {
 }
 
 function updateItem() {
+    getNameAndId();
     const itemId = document.getElementById('edit-id').value;
     const item = {
         id: parseInt(itemId, 10),
