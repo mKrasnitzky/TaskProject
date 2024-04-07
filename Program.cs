@@ -15,6 +15,7 @@ using TaskProject.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddAuthentication(options =>

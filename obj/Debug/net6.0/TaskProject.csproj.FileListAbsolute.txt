@@ -101,9 +101,3 @@ Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.
 Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\TaskProject.pdb
 Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\TaskProject.genruntimeconfig.cache
 Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\ref\TaskProject.dll
-Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\TaskProject.sourcelink.json
-Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\staticwebassets\msbuild.TaskProject.Microsoft.AspNetCore.StaticWebAssets.props
-Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\staticwebassets\msbuild.build.TaskProject.props
-Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.TaskProject.props
-Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.TaskProject.props
-Z:\B\קרסניצקי מרים\core\שיעור 2\new\TaskProject\obj\Debug\net6.0\staticwebassets.pack.json
