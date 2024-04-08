@@ -32,10 +32,24 @@ namespace TaskProject.Controllers{
             return UserService.Get(userId);
         }
 
+        [HttpPut]
+        [Authorize(Policy = "User")]
+        public ActionResult Put(User newUser)
+        {
+            newUser.isAdmin = UserService.IsAdmin(userId);
+            var result = UserService.Update(userId, newUser);
+            if (!result)
+            {
+                return BadRequest();
+            }
+            return NoContent();
+        }
+
         [HttpGet]
         [Authorize(Policy = "Admin")]
         public ActionResult<List<User>> Get()
         {
+            
             return UserService.GetAll();
         }
 

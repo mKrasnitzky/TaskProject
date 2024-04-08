@@ -3,7 +3,7 @@ let userId = 0;
 let name = '';
 const token = localStorage.getItem("Token");
 const userName = document.getElementById("userName");
-const user = document.getElementById("user");
+const userHTML = document.getElementById("user");
 let tasks = [];
 
 const HaveToken = () => {
@@ -73,62 +73,103 @@ console.log(this.name);
 userName.innerHTML = this.name;
 
 userName.onclick = () => {
-    getUser()
+    seeUser()
 }
 
 const writeUser = (myUser) => {
     console.log("in before פרטים");
-    user.innerHTML = `
+    userHTML.innerHTML = `
         <div id="user">
-            <div id="edit-name">name: ${myUser.name}</div>
-            <div id="edit-email">email: ${myUser.email}</div>
-            <div id="edit-password">password: ${myUser.password}</div>
-            <div>id: ${myUser.id}</div>
-            <button id="edit-user' type="button" onsubmit="editName">edit</button><br><br>
+            <div id="edit-name">name: <span id="span-name">${myUser.name}</span></div>
+            <div id="edit-email">email: <span id="span-email">${myUser.email}</span></div>
+            <div id="edit-password">password: <span id="span-password">${myUser.password}</span></div>
+            <div id="edit-id">id: <span id="span-id">${myUser.id}</span></div>
+            <button id="edit-user' type="button" onclick="editName()">edit</button><br><br>
             <h4 id="userName"></h4>
         </div>
         `
 }
 
-const editName = () => {
+const ok = () => {
+    console.log(document.getElementById('input-name').value);
 
-    user.innerHTML = `
+    user = {
+        name: document.getElementById('input-name').value,
+        email: document.getElementById('input-email').value,
+        password: document.getElementById('input-password').value,
+        id: document.getElementById('span-id').innerHTML
+
+
+    }        
+    writeUser(user);
+    uri = '/User'
+    return fetch(uri, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(user)
+        })
+        .then(() => getItems())
+        .catch(error => console.error('Unable to get items.', error));
+
+    
+}
+
+const editName = () => {
+    console.log("in func edit user");
+console.log(document.getElementById('span-name').innerHTML);
+    const edit_name = document.getElementById('span-name').innerHTML;
+    const edit_email = document.getElementById('span-email').innerHTML;
+    const edit_password = document.getElementById('span-password').innerHTML;
+    console.log(edit_email);
+
+    userHTML.innerHTML = `
     <div id="user">
-    <div id="edit-name" style="display: none;">name: ${document.getElementsByName('input-name')}</div>
-    <input id="input-name" type="text" value="${document.getElementsByName('edit-name')}">
-    <div id="edit-email" style="display: none;">email: ${document.getElementById('input-email')}</div>
-    <input id="input-email" type="email" value="${document.getElementById('edit-email')}">
-    <div id="edit-password" style="display: none;">password: ${document.getElementById('input-password')}</div>
-    <input id="input-password" type="text" value="${document.getElementById('edit-password')}">
-    <div>id: ${myUser.id}</div>
-    <button id="edit-user' type="button" onsubmit="editName">edit</button><br><br><br><br>
-    <h4 id="userName"></h4>
-</div>
+        <input id="input-name" type="text" value="${edit_name}">
+        <div id="edit-name" style="display: none;">name: <span id="span-name">${document.getElementById('input-name')}</span></div>
+        <input id="input-email" type="email" value="${edit_email}">
+        <div id="edit-email" style="display: none;">email: <span id="span-email">${document.getElementById('input-email')}</span></div>
+        <input id="input-password" type="text" value="${edit_password}">
+        <div id="edit-password" style="display: none;">password: <span id="span-password">${document.getElementById('input-password')}</span></div>
+        <div id="input-id">id: <span id="span-id">${document.getElementById('span-id').innerHTML}</span></div>
+        <button id="edit-user' type="button" onclick="ok()">edit</button>
+        <button id="edit-user' type="button" style="display: none;" onclick="editName()">edit</button><br><br><br><br>
+        <h4 id="userName"></h4>
+    </div>
     `
-    const editName = document.getElementsByName('edit-name');
-    const editEmail = document.getElementById('edit-email');
-    const editPassword = document.getElementById('edit-password');
-    editName.style.display = 'none';
+    // console.log(document.getElementsByName('edit-name').style);
+    // const editName = document.getElementsByName('edit-name');
+    // const editEmail = document.getElementById('edit-email');
+    // const editPassword = document.getElementById('edit-password');
+    // editName.style.display = 'none';
 
 
 }
 
 HaveToken();
-uri = '/User/GetMyUser'
-fetch(uri, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => response.json())
-    .then(user => {
-        console.log(user);
-        writeUser(user);
-    })
-    .catch(error => console.error('Unable to get items.', error));
+
+
+const seeUser = () => {
+    uri = '/User/GetMyUser'
+    fetch(uri, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(user => {
+            console.log(user);
+            writeUser(user);
+        })
+        .catch(error => console.error('Unable to get items.', error));
+
+}
 
 
 

@@ -106,6 +106,19 @@ namespace TaskProject.Services
             return true;
         }
 
+        public bool IsAdmin(int id) {
+
+            foreach (User user in users)
+            {
+                if (user.id == id)
+                {
+                    return user.isAdmin;
+                }
+            }
+            return false;
+
+        }
+
         public List<User>  getUsers()=>users;
 
     }

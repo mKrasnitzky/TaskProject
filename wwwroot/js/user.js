@@ -3,7 +3,8 @@ const token = localStorage.getItem("Token");
 let users = [];
 
 const isAdmin = () => {
-
+    if(!token)
+        window.location.href = '../index.html';
     uri = '/User/GetMyUser'
     fetch(uri, {
         method: 'GET',
@@ -13,7 +14,13 @@ const isAdmin = () => {
             'Authorization': `Bearer ${token}`
         }
     })
-        .then(response => response.json())
+        .then(response =>
+            { 
+            if(response.status() === 401)
+                throw new Error();
+            else 
+                return response.json();
+        })
         .then(user => {
             console.log("in func");
             if (!user.isAdmin)
@@ -35,7 +42,13 @@ function getUsers() {
             'Authorization': `Bearer ${token}`
         }
     })
-        .then(response => response.json())
+    .then(response =>
+        { 
+        if(response.status() === 401)
+            throw new Error();
+        else 
+            return response.json();
+    })
         .then(user => {
             console.log("in func");
             _displayItems(user);

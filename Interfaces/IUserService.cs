@@ -16,6 +16,8 @@ namespace TaskProject.Interfaces
         bool Update(int id, User newUser);
 
         bool Delete(int id);
+
+        bool IsAdmin(int id);
         
         List<User> getUsers();
     }

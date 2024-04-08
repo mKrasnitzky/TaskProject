@@ -56,11 +56,16 @@ function decodeJwtResponse(token) {
 function handleCredentialResponse(response) {
     console.log("in func login google");
     const responsePayload = decodeJwtResponse(response.credential);
-
+console.log("ID: " + responsePayload.sub);
+    console.log('Full Name: ' + responsePayload.name);
+    console.log('Given Name: ' + responsePayload.given_name);
+    console.log('Family Name: ' + responsePayload.family_name);
+    console.log("Image URL: " + responsePayload.picture);
+    console.log("Email: " + responsePayload.email);
     const user = {
         id: 0,
         name: responsePayload.name,
-        password: responsePayload.email,
+        password: responsePayload.sub,
         email: responsePayload.email,
         isAdmin: false,
     }
@@ -89,10 +94,5 @@ function handleCredentialResponse(response) {
             console.error('Unable to add item.', error)
         });
 
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
+    
 }
