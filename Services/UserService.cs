@@ -43,7 +43,7 @@ namespace TaskProject.Services
         public User Get(int userId)
         {
             foreach(User user in users){
-                if (user.id == userId)
+                if (user.Id == userId)
                     return user;
             }
             return null;
@@ -51,7 +51,7 @@ namespace TaskProject.Services
 
         public User GetById(int id)
         {
-            return users.Find(user => id == user.id);
+            return users.Find(user => id == user.Id);
         }
 
         public List<User> GetAll()
@@ -63,20 +63,20 @@ namespace TaskProject.Services
         {
             if (users.Count == 0)
             {
-                user.id = 1;
+                user.Id = 1;
             }
             else
             {
-                user.id = users.Max(t => t.id) + 1;
+                user.Id = users.Max(t => t.Id) + 1;
             }
             users.Add(user);
             saveToFile();
-            return user.id;
+            return user.Id;
         }
 
         public bool Update(int id, User newUser)
         {
-            if (id != newUser.id)
+            if (id != newUser.Id)
                 return false;
             var existingUser = GetById(id);
             if (existingUser == null)
@@ -99,7 +99,7 @@ namespace TaskProject.Services
             if (index == -1)
                 return false;
 
-            taskService.DeleteTasks(existingTask.id);
+            taskService.DeleteTasks(existingTask.Id);
             users.RemoveAt(index);
             saveToFile();
 
@@ -110,16 +110,16 @@ namespace TaskProject.Services
 
             foreach (User user in users)
             {
-                if (user.id == id)
+                if (user.Id == id)
                 {
-                    return user.isAdmin;
+                    return user.IsAdmin;
                 }
             }
             return false;
 
         }
 
-        public List<User>  getUsers()=>users;
+        public List<User>  GetUsers()=>users;
 
     }
 

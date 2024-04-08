@@ -19,7 +19,7 @@ namespace TaskProject.Interfaces
 
         bool IsAdmin(int id);
         
-        List<User> getUsers();
+        List<User> GetUsers();
     }
 }
 

@@ -17,20 +17,20 @@ namespace TaskProject.Services
 
         public bool CheckLogin(User myUser) {
 
-            List<User> myList = userService.getUsers();
+            List<User> myList = userService.GetUsers();
 
-            foreach(User user in userService.getUsers()) 
+            foreach(User user in userService.GetUsers()) 
             {
-                if(user.name == myUser.name && user.password == myUser.password)
+                if(user.Name == myUser.Name && user.Password == myUser.Password)
                     return true;
             }
             return false;
         }
         
         public bool CheckAdmin(User myUser) {
-            foreach(User user in userService.getUsers()) {
-                if(myUser.name == user.name && myUser.password == user.password){
-                    if(user.isAdmin)
+            foreach(User user in userService.GetUsers()) {
+                if(myUser.Name == user.Name && myUser.Password == user.Password){
+                    if(user.IsAdmin)
                         return true;
                     return false;
                 }
@@ -39,9 +39,9 @@ namespace TaskProject.Services
         }
 
         public int GetId(User myUser) {
-            foreach(User user in userService.getUsers()) {
-               if(myUser.name == user.name && myUser.password == user.password)
-                   return user.id;
+            foreach(User user in userService.GetUsers()) {
+               if(myUser.Name == user.Name && myUser.Password == user.Password)
+                   return user.Id;
             }
             return 1;
         }

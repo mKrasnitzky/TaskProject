@@ -3,26 +3,24 @@ const token = localStorage.getItem("Token");
 let users = [];
 
 const isAdmin = () => {
-    if(!token)
+    if (!token)
         window.location.href = '../index.html';
-    uri = '/User/GetMyUser'
+    uri = '/User/GetMyUser';
     fetch(uri, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    })
-        .then(response =>
-            { 
-            if(response.status() === 401)
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (response.status === 401)
                 throw new Error();
-            else 
+            else
                 return response.json();
         })
         .then(user => {
-            console.log("in func");
             if (!user.isAdmin)
                 window.location.href = '../index.html';
         })
@@ -35,22 +33,20 @@ const isAdmin = () => {
 function getUsers() {
     uri = '/User'
     fetch(uri, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response =>
-        { 
-        if(response.status() === 401)
-            throw new Error();
-        else 
-            return response.json();
-    })
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (response.status === 401)
+                throw new Error();
+            else
+                return response.json();
+        })
         .then(user => {
-            console.log("in func");
             _displayItems(user);
         })
         .catch(error => console.error('Unable to get User.', error));
@@ -60,26 +56,26 @@ function getUsers() {
 function addUser() {
     const addNameTextbox = document.getElementById('add-name');
     const addPasswordTextbox = document.getElementById('add-password');
-    const addEmailTextbox = document.getElementById('add-email'); 
+    const addEmailTextbox = document.getElementById('add-email');
 
     const item = {
         id: 0,
-        name: addNameTextbox.value.trim(),//this.userId,
+        name: addNameTextbox.value.trim(),
         password: addPasswordTextbox.value.trim(),
         email: addEmailTextbox.value.trim(),
         isAdmin: false
     };
 
-    uri = '/User'
+    uri = '/User';
     fetch(uri, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(item)
-    })
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(item)
+        })
         .then(response => response.json())
         .then(() => {
             getUsers();
@@ -91,16 +87,16 @@ function addUser() {
 }
 
 function deleteItem(id) {
-    console.log(id);
-    uri ='/User'
+
+    uri = '/User';
     fetch(`${uri}/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-    })
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
         .then(() => getUsers())
         .catch(error => console.error('Unable to delete item.', error));
 }
@@ -123,17 +119,17 @@ function updateItem() {
         email: document.getElementById('edit-email').value.trim(),
         isAdmin: false
     };
-    console.log(item);
-    uri = '/User'
+
+    uri = '/User';
     fetch(`${uri}/${itemId}`, {
-        method: 'PUT',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(item)
-    })
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(item)
+        })
         .then(() => getUsers())
         .catch(error => console.error('Unable to update item.', error));
 
@@ -156,7 +152,6 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
-    console.log(data);
     const tBody = document.getElementById('users');
     tBody.innerHTML = '';
 

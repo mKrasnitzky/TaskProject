@@ -1,19 +1,17 @@
+const form = document.getElementById('formLogin');
+const loginUrl = '/Login'
+
 const saveInLocalStorage = (token) => {
 
     localStorage.setItem("Token", token);
 
 }
 
-const form = document.getElementById('formLogin');
-const loginUrl = '/Login'
-
 form.onsubmit = (event) => {
 
-    console.log("in the func");
     event.preventDefault();
     const name = document.getElementById('name').value;
     const password = document.getElementById('password').value;
-    console.log();
 
     const user = {
         id: 0,
@@ -54,14 +52,9 @@ function decodeJwtResponse(token) {
 
 
 function handleCredentialResponse(response) {
-    console.log("in func login google");
+
     const responsePayload = decodeJwtResponse(response.credential);
-console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
+
     const user = {
         id: 0,
         name: responsePayload.name,
@@ -69,6 +62,13 @@ console.log("ID: " + responsePayload.sub);
         email: responsePayload.email,
         isAdmin: false,
     }
+
+    console.log("ID: " + responsePayload.sub);
+    console.log('Full Name: ' + responsePayload.name);
+    console.log('Given Name: ' + responsePayload.given_name);
+    console.log('Family Name: ' + responsePayload.family_name);
+    console.log("Image URL: " + responsePayload.picture);
+    console.log("Email: " + responsePayload.email);
 
     fetch(loginUrl, {
             method: 'POST',
@@ -94,5 +94,5 @@ console.log("ID: " + responsePayload.sub);
             console.error('Unable to add item.', error)
         });
 
-    
+
 }

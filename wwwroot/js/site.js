@@ -6,10 +6,9 @@ const userName = document.getElementById("userName");
 const userHTML = document.getElementById("user");
 let tasks = [];
 
-const HaveToken = () => {
+const haveToken = () => {
 
     if (!token) {
-        console.log('in have token')
         window.location.href = '../html/login.html';
     }
 
@@ -34,24 +33,41 @@ function isAdmin() {
             }
         })
         .then(response => response.json())
-        .then(user => {
-            console.log(user);
-            toGoUsers(user);
-        })
+        .then(user => toGoUsers(user))
         .catch(error => console.error('Unable to get items.', error));
 }
 
 isAdmin();
 const getId = (user) => {
+    console.log(user.id);
     this.name = user.name;
-    this.userId = user.userId;
+    this.userId = user.id;
 
 }
 
+function updateMyUser() {
+
+    uri = '/User/GetMyUser';
+    fetch(uri, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(user => console.log(user))
+        .catch(error => console.error('Unable to get items.', error));
+}
+
+updateMyUser();
+console.log(userId);
+
 function getNameAndId() {
 
-    HaveToken();
-    uri = '/User/GetMyUser'
+    haveToken();
+    uri = '/User/GetMyUser';
     return fetch(uri, {
             method: 'GET',
             headers: {
@@ -61,23 +77,19 @@ function getNameAndId() {
             }
         })
         .then(response => response.json())
-        .then(user => {
-            getId(user);
-            console.log("the id is: " + this.userId);
-        })
+        .then(user => getId(user))
         .catch(error => console.error('Unable to get items.', error));
 }
 
 getNameAndId();
-console.log(this.name);
 userName.innerHTML = this.name;
 
 userName.onclick = () => {
-    seeUser()
+    seeUser();
 }
 
 const writeUser = (myUser) => {
-    console.log("in before פרטים");
+
     userHTML.innerHTML = `
         <div id="user">
             <div id="edit-name">name: <span id="span-name">${myUser.name}</span></div>
@@ -87,22 +99,21 @@ const writeUser = (myUser) => {
             <button id="edit-user' type="button" onclick="editName()">edit</button><br><br>
             <h4 id="userName"></h4>
         </div>
-        `
+        `;
 }
 
 const ok = () => {
-    console.log(document.getElementById('input-name').value);
 
     user = {
         name: document.getElementById('input-name').value,
         email: document.getElementById('input-email').value,
         password: document.getElementById('input-password').value,
         id: document.getElementById('span-id').innerHTML
+    }
 
-
-    }        
     writeUser(user);
-    uri = '/User'
+
+    uri = '/User';
     return fetch(uri, {
             method: 'PUT',
             headers: {
@@ -115,45 +126,36 @@ const ok = () => {
         .then(() => getItems())
         .catch(error => console.error('Unable to get items.', error));
 
-    
+
 }
 
 const editName = () => {
-    console.log("in func edit user");
-console.log(document.getElementById('span-name').innerHTML);
+
     const edit_name = document.getElementById('span-name').innerHTML;
     const edit_email = document.getElementById('span-email').innerHTML;
     const edit_password = document.getElementById('span-password').innerHTML;
-    console.log(edit_email);
 
     userHTML.innerHTML = `
-    <div id="user">
-        <input id="input-name" type="text" value="${edit_name}">
-        <div id="edit-name" style="display: none;">name: <span id="span-name">${document.getElementById('input-name')}</span></div>
-        <input id="input-email" type="email" value="${edit_email}">
-        <div id="edit-email" style="display: none;">email: <span id="span-email">${document.getElementById('input-email')}</span></div>
-        <input id="input-password" type="text" value="${edit_password}">
-        <div id="edit-password" style="display: none;">password: <span id="span-password">${document.getElementById('input-password')}</span></div>
-        <div id="input-id">id: <span id="span-id">${document.getElementById('span-id').innerHTML}</span></div>
-        <button id="edit-user' type="button" onclick="ok()">edit</button>
-        <button id="edit-user' type="button" style="display: none;" onclick="editName()">edit</button><br><br><br><br>
-        <h4 id="userName"></h4>
-    </div>
+        <div id="user">
+            <input id="input-name" type="text" value="${edit_name}">
+            <div id="edit-name" style="display: none;">name: <span id="span-name">${document.getElementById('input-name')}</span></div>
+            <input id="input-email" type="email" value="${edit_email}">
+            <div id="edit-email" style="display: none;">email: <span id="span-email">${document.getElementById('input-email')}</span></div>
+            <input id="input-password" type="text" value="${edit_password}">
+            <div id="edit-password" style="display: none;">password: <span id="span-password">${document.getElementById('input-password')}</span></div>
+            <div id="input-id">id: <span id="span-id">${document.getElementById('span-id').innerHTML}</span></div>
+            <button id="edit-user' type="button" onclick="ok()">edit</button>
+            <button id="edit-user' type="button" style="display: none;" onclick="editName()">edit</button><br><br><br><br>
+            <h4 id="userName"></h4>
+        </div>
     `
-    // console.log(document.getElementsByName('edit-name').style);
-    // const editName = document.getElementsByName('edit-name');
-    // const editEmail = document.getElementById('edit-email');
-    // const editPassword = document.getElementById('edit-password');
-    // editName.style.display = 'none';
-
-
 }
 
-HaveToken();
+haveToken();
 
 
 const seeUser = () => {
-    uri = '/User/GetMyUser'
+    uri = '/User/GetMyUser';
     fetch(uri, {
             method: 'GET',
             headers: {
@@ -163,18 +165,14 @@ const seeUser = () => {
             }
         })
         .then(response => response.json())
-        .then(user => {
-            console.log(user);
-            writeUser(user);
-        })
+        .then(user => writeUser(user))
         .catch(error => console.error('Unable to get items.', error));
-
 }
 
 
 
 function getItems() {
-    console.log('in get items');
+
     uri = '/Task';
     fetch(uri, {
             method: 'GET',
@@ -184,14 +182,8 @@ function getItems() {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(response => {
-            console.log('in response')
-            return response.json();
-        })
-        .then(data => {
-            console.log('in data')
-            _displayItems(data);
-        })
+        .then(response => response.json())
+        .then(data => _displayItems(data))
         .catch(error => console.error('Unable to get items.', error));
 }
 
@@ -200,13 +192,13 @@ function addItem() {
 
     const item = {
         id: 7,
-        userId: 0, //this.userId,
+        userId: 0,
         profession: "string",
         isDone: false,
         description: addNameTextbox.value.trim()
     };
 
-    uri = '/Task'
+    uri = '/Task';
     fetch(uri, {
             method: 'POST',
             headers: {
@@ -257,7 +249,8 @@ function updateItem() {
         description: document.getElementById('edit-name').value.trim(),
         profession: ""
     };
-    console.log(item);
+
+    uri = '/Task';
     fetch(`${uri}/${itemId}`, {
             method: 'PUT',
             headers: {
@@ -286,7 +279,7 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
-    console.log(data);
+
     const tBody = document.getElementById('tasks');
     tBody.innerHTML = '';
 

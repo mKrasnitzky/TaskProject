@@ -36,7 +36,7 @@ namespace TaskProject.Controllers{
         [Authorize(Policy = "User")]
         public ActionResult Put(User newUser)
         {
-            newUser.isAdmin = UserService.IsAdmin(userId);
+            newUser.IsAdmin = UserService.IsAdmin(userId);
             var result = UserService.Update(userId, newUser);
             if (!result)
             {
